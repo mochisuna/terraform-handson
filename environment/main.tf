@@ -8,3 +8,8 @@ module "cloudwatch_log" {
   source         = "../modules/cwl"
   log_group_name = "sample-log-group"
 }
+
+module "vpc" {
+  source = "../modules/vpc"
+  region = "${var.region}"
+}
