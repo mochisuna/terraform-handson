@@ -1,5 +1,3 @@
-variable "region" {
-  default = "us-west-2"
-}
+variable "region" {}
 
 variable "log_group_name" {}
