@@ -9,3 +9,7 @@ variable "instance_type" {
 variable "sg_name" {}
 
 variable "key_pair_name" {}
+
+variable vpc {
+  type = "map"
+}

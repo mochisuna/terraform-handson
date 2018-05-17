@@ -1,9 +1,15 @@
 resource "aws_instance" "web" {
-  ami                    = "${var.ami}"
-  instance_type          = "${var.instance_type}"
-  monitoring             = true
-  vpc_security_group_ids = ["${aws_security_group.allowed.id}"]
-  key_name               = "${aws_key_pair.auth.id}"
+  ami           = "${var.ami}"
+  instance_type = "${var.instance_type}"
+  monitoring    = true
+  key_name      = "${aws_key_pair.auth.id}"
+
+  vpc_security_group_ids = [
+    "${aws_security_group.allowed.id}",
+    "${lookup(var.vpc, "default_sg_id")}",
+  ]
+
+  subnet_id = "${lookup(var.vpc, "public_subnet_a_id")}"
 
   tags {
     Name = "sample"

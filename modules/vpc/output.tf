@@ -1,23 +1,12 @@
-output "vpc_id" {
-  value = "${aws_vpc.vpc.id}"
-}
-
-output "default_security_group_id" {
-  value = "${aws_default_security_group.default.id}"
-}
-
-output "public_subnet_a_id" {
-  value = "${aws_subnet.public-subnet-a.id}"
-}
-
-output "public_subnet_c_id" {
-  value = "${aws_subnet.public-subnet-c.id}"
-}
-
-output "private_subnet_a_id" {
-  value = "${aws_subnet.private-subnet-a.id}"
-}
-
-output "private_subnet_c_id" {
-  value = "${aws_subnet.private-subnet-c.id}"
+output "outputs" {
+  value = "${
+    map(
+      "id",                  "${aws_vpc.vpc.id}",
+      "default_sg_id",       "${aws_default_security_group.default.id}",
+      "public_subnet_a_id",  "${aws_subnet.public-subnet-a.id}",
+      "public_subnet_c_id",  "${aws_subnet.public-subnet-c.id}",
+      "private_subnet_a_id", "${aws_subnet.private-subnet-a.id}",
+      "private_subnet_c_id", "${aws_subnet.private-subnet-c.id}",
+    )
+  }"
 }
