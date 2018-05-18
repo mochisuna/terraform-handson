@@ -29,6 +29,7 @@ resource "aws_eip" "ec2_eip" {
 resource "aws_security_group" "allowed" {
   name        = "${var.sg_name}"
   description = "Allow all inbound traffic from localhost"
+  vpc_id      = "${lookup(var.vpc, "id")}"
 
   ingress {
     from_port = 0
